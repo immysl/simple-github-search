@@ -3,13 +3,10 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      query: '',
-      userList: [],
-      currentUser: {}
+      query: ''
     };
 
     this.onSearchUpdate = this.onSearchUpdate.bind(this);
-    this.onUserListUpdate = this.onUserListUpdate.bind(this);
   }
 
   getHomeProps(props) {
@@ -17,15 +14,7 @@ class App extends React.Component {
 
     newProps.query = this.state.query;
     newProps.onSearchUpdate = this.onSearchUpdate;
-    newProps.onUserListUpdate = this.onUserListUpdate;
 
-    return newProps;
-  }
-
-  getProfileProps(props) {
-    let newProps = props;
-
-    newProps.userList = this.state.userList;
     return newProps;
   }
 
@@ -47,7 +36,7 @@ class App extends React.Component {
           ReactRouterDOM.Route,
           {
             path: '/profile/:id',
-            render: (props) => React.createElement(Profile, this.getProfileProps(props))
+            render: Profile
           }
         )
       ]
@@ -56,9 +45,5 @@ class App extends React.Component {
 
   onSearchUpdate(query) {
     this.setState({ query });
-  }
-
-  onUserListUpdate(userList) {
-    this.setState({ userList });
   }
 }
