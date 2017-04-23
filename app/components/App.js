@@ -4,11 +4,29 @@ class App extends React.Component {
 
     this.state = {
       query: '',
-      userList: []
+      userList: [],
+      currentUser: {}
     };
 
     this.onSearchUpdate = this.onSearchUpdate.bind(this);
     this.onUserListUpdate = this.onUserListUpdate.bind(this);
+  }
+
+  getHomeProps(props) {
+    let newProps = props;
+
+    newProps.query = this.state.query;
+    newProps.onSearchUpdate = this.onSearchUpdate;
+    newProps.onUserListUpdate = this.onUserListUpdate;
+
+    return newProps;
+  }
+
+  getProfileProps(props) {
+    let newProps = props;
+
+    newProps.userList = this.state.userList;
+    return newProps;
   }
 
   render() {
@@ -18,18 +36,20 @@ class App extends React.Component {
       [
         React.createElement('h1', null, 'Simple GitHub Search'),
         React.createElement(
-          'Route',
+          ReactRouterDOM.Route,
           {
             path: '/',
             exact: true,
-            component: Home
-          },
-          [
-            React.createElement(Search, { onSearchUpdate: this.onSearchUpdate }),
-            React.createElement(UserListContainer, { query: this.state.query, onUserListUpdate: this.onUserListUpdate })
-          ]
+            render: (props) => React.createElement(Home, this.getHomeProps(props))
+          }
         ),
-        React.createElement('Route', { path: '/profile/:id', component: Profile })
+        React.createElement(
+          ReactRouterDOM.Route,
+          {
+            path: '/profile/:id',
+            render: (props) => React.createElement(Profile, this.getProfileProps(props))
+          }
+        )
       ]
     );
   }
