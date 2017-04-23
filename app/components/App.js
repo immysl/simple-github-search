@@ -36,7 +36,7 @@ class App extends React.Component {
           ReactRouterDOM.Route,
           {
             path: '/profile/:username',
-            render: ProfileContainer
+            component: ProfileContainer
           }
         )
       ]
