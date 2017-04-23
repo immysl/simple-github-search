@@ -5,6 +5,7 @@
   <meta charset="utf8">
   <title>Simple GitHub Search</title>
   <link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/style.css">
   <base href="/">
 </head>
 
@@ -15,13 +16,18 @@
   <script src="https://unpkg.com/react-dom@15.5.0/dist/react-dom.min.js"></script>
   <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
 
+  <script>
+    // shortcut for creating elements
+    const h = React.createElement;
+  </script>
+
   <script src="/components/home/User.js"></script>
   <script src="/components/home/UserList.js"></script>
   <script src="/components/home/UserListContainer.js"></script>
   <script src="/components/home/Search.js"></script>
   <script src="/components/home/Home.js"></script>
 
-  <script src="/components/profile/ProfileContainer.js"></script>  
+  <script src="/components/profile/ProfileContainer.js"></script>
   <script src="/components/profile/Profile.js"></script>
 
   <script src="/components/App.js"></script>
