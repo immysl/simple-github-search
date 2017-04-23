@@ -1,1 +1,8 @@
-ReactDOM.render(React.createElement(App, null, null), document.getElementById('app'));
+ReactDOM.render(
+  React.createElement(
+    ReactRouterDOM.BrowserRouter,
+    { basename: '/' },
+    React.createElement(App)
+  ),
+  document.getElementById('app')
+);
