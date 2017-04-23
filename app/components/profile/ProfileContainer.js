@@ -1,21 +1,30 @@
 class ProfileContainer extends React.Component {
-  componentDidUpdate(previousProps, previousState) {
-    const { username } = this.props;
+  constructor(props) {
+    super(props);
 
-    if (username !== previousProps.username) {
-      this.fetchUserInfo(username).then(data => {
-        this.userInfo = data[0];
-        this.userRepose = data[1];
-      }).catch(error => {
-        console.error(`Promise error due to network request failure - ${error}`);
+    this.state = {
+      userInfo: {},
+      userRepos: []
+    };
+  }
+
+  componentWillMount() {
+    const { username } = this.props.match.params;
+
+    this.fetchUserInfo(username).then(data => {
+      this.setState({
+        userInfo: data[0],
+        userRepose: data[1]
       });
-    }
+    }).catch(error => {
+      console.error(`Promise error due to network request failure - ${error}`);
+    });
   }
 
   fetchUserInfo(username) {
     return Promise.all([
-      this.fetchUserDetails(),
-      this.fetchUserRepos()
+      this.fetchUserDetails(username),
+      this.fetchUserRepos(username)
     ]);
   }
 
@@ -45,6 +54,8 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    return React.createElement(Profile, { userInfo: this.userInfo, userRepose: this.userRepos });
+    const { userInfo, userRepos } = this.state;
+
+    return React.createElement(Profile, { userInfo, userRepos });
   }
 }
