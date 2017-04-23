@@ -1,18 +1,28 @@
 class UserListContainer extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      userList: []
+    };
   }
 
   componentDidUpdate(previousProps, previousState) {
-    if (this.props.query !== previousProps.query) {
+    const { query } = this.props;
+
+    if (query !== previousProps.query) {
       // check if query is empty
       // update as blank array if empty
       // fetch data if not empty
-      if (this.props.query === '') {
-        this.userList = [];
+      if (query === '') {
+        this.setState({
+          userList: []
+        });
       } else {
         this.fetchUserList().then(data => {
-          this.userList = data.items;
+          this.setState({
+            userList: data.items
+          });
         }).catch(error => {
           console.error(`Promise error due to network request failure - ${error}`);
         });
@@ -26,7 +36,7 @@ class UserListContainer extends React.Component {
 
     return fetch(apiUrl).then(response => {
       if (response.status !== 200) {
-        console.error(`Error when fetching data from GitHub - ${response.status}: ${response.statusText}`);
+        console.error(`Error when fetching user list data from GitHub - ${response.status}: ${response.statusText}`);
         return;
       }
 
@@ -35,6 +45,6 @@ class UserListContainer extends React.Component {
   }
 
   render() {
-    return React.createElement(UserList, { userList: this.userList });
+    return React.createElement(UserList, { userList: this.state.userList });
   }
 }
