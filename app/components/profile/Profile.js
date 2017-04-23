@@ -1,19 +1,8 @@
-const Profile = ({ match, userList }) => {
-  let currentUser = {};
-
-  // store param ID and cast to int
-  const id = +match.params.id;
-
-  userList.some((user) => {
-    if (user.id === id) {
-      currentUser = user;
-      return;
-    }
-  });
-
+const Profile = ({ userInfo, userRepos }) => {
   const userDetailElements = [
-    React.createElement('li', null, `User ID: ${currentUser.id}`),
-    React.createElement('li', null, `Username: ${currentUser.login}`)
+    React.createElement('li', null, `User ID: ${userInfo.id}`),
+    React.createElement('li', null, `Username: ${userInfo.login}`),
+    React.createElement('li', null, `Name: ${userInfo.name}`)    
   ];
 
   return React.createElement('section', null, userDetailElements);
