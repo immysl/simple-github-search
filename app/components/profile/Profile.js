@@ -8,8 +8,11 @@ const Profile = ({ userInfo, userRepos }) => {
   if (userInfo && userInfo.id) {
     for (const prop in userInfo) {
       if (userInfo.hasOwnProperty(prop) === true) {
+        // show a dash to indicate no value available
+        const value = userInfo[prop] || '-';
+
         userInfoElements.push(
-          h('li', null, `${prop}: ${userInfo[prop]}`)
+          h('li', null, `${prop}: ${value}`)
         );
       }
     }
@@ -18,12 +21,15 @@ const Profile = ({ userInfo, userRepos }) => {
   // check for the same reason as above
   if (userRepos && userRepos.length > 0) {
     userReposElements = userRepos.map(repo => {
+      // show default messasge if not description available
+      const description = repo.description || 'No description available';
+
       return h(
         'li',
         null,
         [
           h('a', { href: repo.html_url }, `${repo.name}: `),
-          h('span', null, repo.description)
+          h('span', null, description)
         ]
       );
     });
