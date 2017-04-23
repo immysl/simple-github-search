@@ -1,13 +1,13 @@
 const User = ({ user }) => {
-  return React.createElement(
+  return h(
     'li',
     null,
-    React.createElement(
+    h(
       ReactRouterDOM.Link,
-      { to: `profile/${user.login}` },
+      { to: `/profile/${user.login}` },
       [
-        React.createElement('span', null, user.id),
-        React.createElement('img', { src: user.avatar_url, width: 100 }, null)
+        h('img', { src: user.avatar_url, width: 20 }),
+        h('span', null, user.login)
       ]
     )
   );
