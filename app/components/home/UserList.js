@@ -7,9 +7,5 @@ const UserList = ({ userList }) => {
     });
   }
 
-  return React.createElement(
-    'ul',
-    null,
-    userElements
-  );
+  return React.createElement('ul', null, userElements);
 };
