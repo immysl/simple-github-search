@@ -13,19 +13,23 @@ class App extends React.Component {
 
   render() {
     return React.createElement(
-      'section',
-      null,
+      'div',
+      { className: 'container' },
       [
         React.createElement('h1', null, 'Simple GitHub Search'),
-        React.createElement(Search, { onSearchUpdate: this.onSearchUpdate }, null),
         React.createElement(
-          UserListContainer,
+          'Route',
           {
-            query: this.state.query,
-            onUserListUpdate: this.onUserListUpdate
+            path: '/',
+            exact: true,
+            component: Home
           },
-          null
-        )
+          [
+            React.createElement(Search, { onSearchUpdate: this.onSearchUpdate }),
+            React.createElement(UserListContainer, { query: this.state.query, onUserListUpdate: this.onUserListUpdate })
+          ]
+        ),
+        React.createElement('Route', { path: '/profile/:id', component: Profile })
       ]
     );
   }
