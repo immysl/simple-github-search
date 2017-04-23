@@ -44,6 +44,6 @@ class UserListContainer extends React.Component {
   }
 
   render() {
-    return React.createElement(UserList, { userList: this.userList }, null);
+    return React.createElement(UserList, { userList: this.userList });
   }
 }

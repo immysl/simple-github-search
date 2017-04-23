@@ -19,8 +19,7 @@ class Search extends React.Component {
           type: 'search',
           placeholder: 'search github users',
           onChange: this.updateQuery
-        },
-        null
+        }
       )
     );
   }
