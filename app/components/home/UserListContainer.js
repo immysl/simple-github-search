@@ -7,32 +7,49 @@ class UserListContainer extends React.Component {
     };
   }
 
+  componentWillMount() {
+    const { query } = this.props;
+
+    // update user list if query is not empty or undefined
+    if (!!query) {
+      this.setUserList(query);
+    }
+  }
+
   componentDidUpdate(previousProps, previousState) {
     const { query } = this.props;
 
     if (query !== previousProps.query) {
       // check if query is empty
-      // update as blank array if empty
-      // fetch data if not empty
+      // if empty reset user list
+      // else fetch and set user list
       if (query === '') {
-        this.setState({
-          userList: []
-        });
+        this.resetUserList();
       } else {
-        this.fetchUserList().then(data => {
-          this.setState({
-            userList: data.items
-          });
-        }).catch(error => {
-          console.error(`Promise error due to network request failure - ${error}`);
-        });
+        this.setUserList(query);
       }
     }
   }
 
+  resetUserList() {
+    this.setState({
+      userList: []
+    });
+  }
+
+  setUserList(query) {
+    this.fetchUserList(query).then(data => {
+      this.setState({
+        userList: data.items
+      });
+    }).catch(error => {
+      console.error(`Promise error due to network request failure - ${error}`);
+    });
+  }
+
   // fetch remote user list data from github
   fetchUserList(query) {
-    const apiUrl = `https://api.github.com/search/users?q=${this.props.query}`;
+    const apiUrl = `https://api.github.com/search/users?q=${query}`;
 
     return fetch(apiUrl).then(response => {
       if (response.status !== 200) {
