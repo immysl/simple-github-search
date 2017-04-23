@@ -3,9 +3,9 @@ const UserList = ({ userList }) => {
 
   if (userList && userList.length > 0) {
     userElements = userList.map(user => {
-      return React.createElement(User, { user });
+      return h(User, { user });
     });
   }
 
-  return React.createElement('ul', null, userElements);
+  return h('ul', { className: 'list-unstyled' }, userElements);
 };

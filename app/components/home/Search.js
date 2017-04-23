@@ -10,14 +10,15 @@ class Search extends React.Component {
   }
 
   render() {
-    return React.createElement(
+    return h(
       'form',
-      { id: 'search-form' },
-      React.createElement(
+      { className: 'text-center' },
+      h(
         'input',
         {
           type: 'search',
           placeholder: 'search github users',
+          className: 'form-control',
           onChange: this.updateQuery
         }
       )
