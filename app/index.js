@@ -1,8 +1,8 @@
 ReactDOM.render(
-  React.createElement(
+  h(
     ReactRouterDOM.BrowserRouter,
     { basename: '/' },
-    React.createElement(App)
+    h(App)
   ),
   document.getElementById('app')
 );

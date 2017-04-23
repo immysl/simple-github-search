@@ -1,10 +1,10 @@
 const Home = ({ onSearchUpdate, query }) => {
-  return React.createElement(
+  return h(
     'section',
     null,
     [
-      React.createElement(Search, { onSearchUpdate }),
-      React.createElement(UserListContainer, { query })
+      h(Search, { onSearchUpdate }),
+      h(UserListContainer, { query })
     ]
   );
 };

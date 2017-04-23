@@ -19,20 +19,20 @@ class App extends React.Component {
   }
 
   render() {
-    return React.createElement(
+    return h(
       'div',
       { className: 'container' },
       [
-        React.createElement('h1', null, 'Simple GitHub Search'),
-        React.createElement(
+        h('h1', { className: 'text-center' }, 'Simple GitHub Search'),
+        h(
           ReactRouterDOM.Route,
           {
             path: '/',
             exact: true,
-            render: (props) => React.createElement(Home, this.getHomeProps(props))
+            render: (props) => h(Home, this.getHomeProps(props))
           }
         ),
-        React.createElement(
+        h(
           ReactRouterDOM.Route,
           {
             path: '/profile/:username',

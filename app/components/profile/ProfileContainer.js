@@ -14,7 +14,7 @@ class ProfileContainer extends React.Component {
     this.fetchUserInfo(username).then(data => {
       this.setState({
         userInfo: data[0],
-        userRepose: data[1]
+        userRepos: data[1]
       });
     }).catch(error => {
       console.error(`Promise error due to network request failure - ${error}`);
@@ -56,6 +56,6 @@ class ProfileContainer extends React.Component {
   render() {
     const { userInfo, userRepos } = this.state;
 
-    return React.createElement(Profile, { userInfo, userRepos });
+    return h(Profile, { userInfo, userRepos });
   }
 }
