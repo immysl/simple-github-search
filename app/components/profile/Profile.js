@@ -28,7 +28,7 @@ const Profile = ({ userInfo, userRepos }) => {
         'li',
         null,
         [
-          h('a', { href: repo.html_url }, `${repo.name}: `),
+          h('a', { href: repo.html_url, target: '_blank' }, `${repo.name}: `),
           h('span', null, description)
         ]
       );
