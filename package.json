@@ -1,0 +1,24 @@
+{
+  "name": "simple-github-search",
+  "version": "1.0.0",
+  "description": "Simple GitHub Search",
+  "main": "index.js",
+  "scripts": {
+    "start": "nano-server app",
+    "nano-server": "nano-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/immysl/simple-github-search.git"
+  },
+  "author": "Ahamed Imran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/immysl/simple-github-search/issues"
+  },
+  "homepage": "https://github.com/immysl/simple-github-search#readme",
+  "devDependencies": {
+    "nano-server": "^0.5.3"
+  }
+}
