@@ -1,6 +1,6 @@
 ReactDOM.render(
   h(
-    ReactRouterDOM.BrowserRouter,
+    ReactRouterDOM.HashRouter,
     { basename: '/' },
     h(App)
   ),
