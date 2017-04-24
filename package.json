@@ -4,8 +4,8 @@
   "description": "Simple GitHub Search",
   "main": "index.js",
   "scripts": {
-    "start": "nano-server app",
-    "nano-server": "nano-server",
+    "start": "http-server app",
+    "http-server": "http-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/immysl/simple-github-search#readme",
   "devDependencies": {
-    "nano-server": "^0.5.3"
+    "http-server": "^0.9.0"
   }
 }
