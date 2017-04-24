@@ -1,10 +1,14 @@
+body, .form-control, p {
+  font-size: 22px;
+}
+
 h1 {
-  font-size: 20px;
+  font-size: 26px;
   margin-bottom: 20px;
 }
 
 h2 {
-  font-size: 18px;
+  font-size: 24px;
 }
 
 .container {

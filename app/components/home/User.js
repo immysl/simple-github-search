@@ -6,7 +6,7 @@ const User = ({ user }) => {
       ReactRouterDOM.Link,
       { to: `/profile/${user.login}` },
       [
-        h('img', { src: user.avatar_url, width: 20 }),
+        h('img', { src: user.avatar_url, width: 60 }),
         h('span', null, user.login)
       ]
     )
