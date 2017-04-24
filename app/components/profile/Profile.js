@@ -3,9 +3,10 @@ const Profile = ({ userInfo, userRepos }) => {
   let userReposElements = [];
 
   // avoid undefined getting printed on screen
-  // the userInfo obj is returned asynchronously
+  // the userInfo object is returned asynchronously
   // so only render child components when it is available
   if (userInfo && userInfo.id) {
+    // iterate through the userInfo object and print key and value pairs
     for (const prop in userInfo) {
       if (userInfo.hasOwnProperty(prop) === true) {
         // show a dash to indicate no value available
@@ -20,6 +21,7 @@ const Profile = ({ userInfo, userRepos }) => {
 
   // check for the same reason as above
   if (userRepos && userRepos.length > 0) {
+    // iterate through the userRepos array and print the repo name/link and description
     userReposElements = userRepos.map(repo => {
       // show default messasge if not description available
       const description = repo.description || 'No description available';

@@ -6,9 +6,12 @@ class App extends React.Component {
       query: ''
     };
 
+    // bind function to App component context
+    // this is to avoid the event context taking over inside the function
     this.onSearchUpdate = this.onSearchUpdate.bind(this);
   }
 
+  // append extra props to route props
   getHomeProps(props) {
     let newProps = props;
 
@@ -16,6 +19,12 @@ class App extends React.Component {
     newProps.onSearchUpdate = this.onSearchUpdate;
 
     return newProps;
+  }
+
+  // set query in App state from Search component 
+  // and pass as props to Home > UserListContainer
+  onSearchUpdate(query) {
+    this.setState({ query });
   }
 
   render() {
@@ -28,7 +37,7 @@ class App extends React.Component {
           ReactRouterDOM.Route,
           {
             path: '/',
-            exact: true,
+            exact: true, // avoid index route being visible in other routes
             render: (props) => h(Home, this.getHomeProps(props))
           }
         ),
@@ -41,9 +50,5 @@ class App extends React.Component {
         )
       ]
     );
-  }
-
-  onSearchUpdate(query) {
-    this.setState({ query });
   }
 }

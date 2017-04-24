@@ -7,6 +7,7 @@ class UserListContainer extends React.Component {
     };
   }
 
+  // set user list when coming back from profile route
   componentWillMount() {
     const { query } = this.props;
 
@@ -16,9 +17,11 @@ class UserListContainer extends React.Component {
     }
   }
 
+  // set user list when search query changes
   componentDidUpdate(previousProps, previousState) {
     const { query } = this.props;
 
+    // check if query props has changed to avoid repeated fetching
     if (query !== previousProps.query) {
       // check if query is empty
       // if empty reset user list
@@ -37,6 +40,7 @@ class UserListContainer extends React.Component {
     });
   }
 
+  // set user list in state to pass down props to UserList component
   setUserList(query) {
     this.fetchUserList(query).then(data => {
       this.setState({
