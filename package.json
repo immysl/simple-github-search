@@ -2,11 +2,9 @@
   "name": "simple-github-search",
   "version": "1.0.0",
   "description": "Simple GitHub Search",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "http-server app",
-    "http-server": "http-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server"
   },
   "repository": {
     "type": "git",
@@ -18,7 +16,8 @@
     "url": "https://github.com/immysl/simple-github-search/issues"
   },
   "homepage": "https://github.com/immysl/simple-github-search#readme",
-  "devDependencies": {
-    "http-server": "^0.9.0"
+  "devDependencies": {},
+  "dependencies": {
+    "express": "^4.15.2"
   }
 }
